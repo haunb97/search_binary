@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>no</title>
+</head>
+<body>
+<script>
+    let list_arr = [];
+    let max_number = 100;
+    for(let i = 0 ; i<max_number ; i++){
+        list_arr[i]= i ;
+    }
+    let nums = parseInt(prompt("nhap vao so ban muon tim trong mang tu 0 - 100"));
+     console.log(list_arr)
+    function linear(num) {
+        for(let i =0 ; i< max_number-1 ; i++){
+            if(list_arr[i] == num ){
+                console.log("vi tri cua "+ num + " trong mang la : "+ i)
+                return ;
+            }
+        }
+        console.log('khong tim thay so trong mang');
+        return;
+    }
+    linear(nums);
+
+    function binary(num,arr) {
+        if(num == arr[Math.floor(arr.length/2)]){
+            console.log("vi tri cua "+ num + " trong mang la "+Math.floor(arr.length/2))
+            return ;
+        }
+        if(num <arr[Math.floor(arr.length/2)]){
+            let new_arr = [] ;
+            for(let j = 0 ; j <Math.floor(arr.length/2) ; j ++){
+                new_arr[j] = j ;
+            }//j sẽ là số từ 0 - 50 ,chia nhỏ mảng để đệ quy
+            return binary(num , new_arr);
+
+        }
+        console.log(Math.floor(arr.length/2));
+        if(num>arr[Math.floor(arr.length/2)]){
+            let last_arr = [] ;
+            for(let k = Math.floor(arr.length/2) ; k <= arr.length; k ++ ){
+                let h = 0 ;
+                last_arr[h] = k ;
+                h++;
+
+            }//k tu 50 - 100 , chia nho mang de de quy
+            return binary(num , last_arr);
+        }
+    }
+    binary(nums,list_arr);
+
+</script>
+</body>
+</html>
